@@ -71,6 +71,86 @@ def read_price_date(Sector: str, currentRatio: float, quickRatio: float, cashRat
 
     return {"Rating": Sector_name_mapping[y_pred_LR[0]]}
 
+@app.get("/rating2/{Sector}/{currentRatio}/{quickRatio}/{cashRatio}/{daysOfSalesOutstanding}/{netProfitMargin}/{pretaxProfitMargin}/{grossProfitMargin}/{operatingProfitMargin}/{returnOnAssets}/{returnOnCapitalEmployed}/{returnOnEquity}/{assetTurnover}/{fixedAssetTurnover}/{debtEquityRatio}/{debtRatio}/{effectiveTaxRate}/{freeCashFlowOperatingCashFlowRatio}/{freeCashFlowPerShare}/{cashPerShare}/{companyEquityMultiplier}/{ebitPerRevenue}/{enterpriseValueMultiple}/{operatingCashFlowPerShare}/{operatingCashFlowSalesRatio}/{payablesTurnover}")
+def rf2(Sector: str, currentRatio: float, quickRatio: float, cashRatio: float, daysOfSalesOutstanding: float, netProfitMargin: float, pretaxProfitMargin: float, grossProfitMargin: float, operatingProfitMargin: float, returnOnAssets: float, returnOnCapitalEmployed: float, returnOnEquity: float, assetTurnover: float, fixedAssetTurnover: float, debtEquityRatio: float, debtRatio: float, effectiveTaxRate: float, freeCashFlowOperatingCashFlowRatio: float, freeCashFlowPerShare: float, cashPerShare: float, companyEquityMultiplier: float, ebitPerRevenue: float, enterpriseValueMultiple: float, operatingCashFlowPerShare: float, operatingCashFlowSalesRatio: float, payablesTurnover: float):
+    #LR_model = joblib.load('LR_model')
+    LR_model = pickle.load(open('LR_model', "rb"))
+
+
+    Sector_name_mapping = {'Basic Industries': 0,
+                'Capital Goods': 1,
+                'Consumer Durables': 2,
+                'Consumer Non-Durables': 3,
+                'Consumer Services': 4,
+                'Energy': 5,
+                'Finance': 6,
+                'Health Care': 7,
+                'Miscellaneous': 8,
+                'Public Utilities': 9,
+                'Technology': 10,
+                'Transportation': 11}
+    
+    Sector_ = Sector_name_mapping[Sector]
+    
+    y_pred_LR = LR_model.predict(np.array([[Sector_, currentRatio, quickRatio, cashRatio, daysOfSalesOutstanding, netProfitMargin, pretaxProfitMargin, grossProfitMargin, 
+                                  operatingProfitMargin, returnOnAssets, returnOnCapitalEmployed, returnOnEquity, assetTurnover, fixedAssetTurnover, debtEquityRatio, 
+                                  debtRatio, effectiveTaxRate, freeCashFlowOperatingCashFlowRatio, freeCashFlowPerShare, cashPerShare, companyEquityMultiplier, 
+                                  ebitPerRevenue, enterpriseValueMultiple, operatingCashFlowPerShare, operatingCashFlowSalesRatio, payablesTurnover],]))
+    
+
+    Sector_name_mapping = {0: 'A',
+                           1: 'AA',
+                           2: 'AAA',
+                           3: 'B',
+                           4: 'BB',
+                           5: 'BBB',
+                           6: 'C',
+                           7: 'CC',
+                           8: 'CCC',
+                           9: 'D'}
+
+    return {"Rating": Sector_name_mapping[y_pred_LR[0]]}
+
+@app.get("/rating3/{Sector}/{currentRatio}/{quickRatio}/{cashRatio}/{daysOfSalesOutstanding}/{netProfitMargin}/{pretaxProfitMargin}/{grossProfitMargin}/{operatingProfitMargin}/{returnOnAssets}/{returnOnCapitalEmployed}/{returnOnEquity}/{assetTurnover}/{fixedAssetTurnover}/{debtEquityRatio}/{debtRatio}/{effectiveTaxRate}/{freeCashFlowOperatingCashFlowRatio}/{freeCashFlowPerShare}/{cashPerShare}/{companyEquityMultiplier}/{ebitPerRevenue}/{enterpriseValueMultiple}/{operatingCashFlowPerShare}/{operatingCashFlowSalesRatio}/{payablesTurnover}")
+def rf3(Sector: str, currentRatio: float, quickRatio: float, cashRatio: float, daysOfSalesOutstanding: float, netProfitMargin: float, pretaxProfitMargin: float, grossProfitMargin: float, operatingProfitMargin: float, returnOnAssets: float, returnOnCapitalEmployed: float, returnOnEquity: float, assetTurnover: float, fixedAssetTurnover: float, debtEquityRatio: float, debtRatio: float, effectiveTaxRate: float, freeCashFlowOperatingCashFlowRatio: float, freeCashFlowPerShare: float, cashPerShare: float, companyEquityMultiplier: float, ebitPerRevenue: float, enterpriseValueMultiple: float, operatingCashFlowPerShare: float, operatingCashFlowSalesRatio: float, payablesTurnover: float):
+    #LR_model = joblib.load('LR_model')
+    LR_model = pickle.load(open('LR_model', "rb"))
+
+
+    Sector_name_mapping = {'Basic Industries': 0,
+                'Capital Goods': 1,
+                'Consumuvicorn main:app --reloader Durables': 2,
+                'Consumer Non-Durables': 3,
+                'Consumer Services': 4,
+                'Energy': 5,
+                'Finance': 6,
+                'Health Care': 7,
+                'Miscellaneous': 8,
+                'Public Utilities': 9,
+                'Technology': 10,
+                'Transportation': 11}
+    
+    Sector_ = Sector_name_mapping[Sector]
+    
+    y_pred_LR = LR_model.predict(np.array([[Sector_, currentRatio, quickRatio, cashRatio, daysOfSalesOutstanding, netProfitMargin, pretaxProfitMargin, grossProfitMargin, 
+                                  operatingProfitMargin, returnOnAssets, returnOnCapitalEmployed, returnOnEquity, assetTurnover, fixedAssetTurnover, debtEquityRatio, 
+                                  debtRatio, effectiveTaxRate, freeCashFlowOperatingCashFlowRatio, freeCashFlowPerShare, cashPerShare, companyEquityMultiplier, 
+                                  ebitPerRevenue, enterpriseValueMultiple, operatingCashFlowPerShare, operatingCashFlowSalesRatio, payablesTurnover],]))
+    
+
+    Sector_name_mapping = {0: 'A',
+                           1: 'AA',
+                           2: 'AAA',
+                           3: 'B',
+                           4: 'BB',
+                           5: 'BBB',
+                           6: 'C',
+                           7: 'CC',
+                           8: 'CCC',
+                           9: 'D'}
+
+    return {"Rating": Sector_name_mapping[y_pred_LR[0]]}
+
 
 #
 
